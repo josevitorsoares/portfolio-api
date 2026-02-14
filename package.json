@@ -1,0 +1,36 @@
+{
+  "name": "portfolio-api",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "prettier":"prettier --write .",
+    "start": "NODE_ENV=development npx dotenv-cli -e .env -- tsx watch ./server.ts"
+  },
+  "keywords": [],
+  "author": "josevitorsoares",
+  "license": "ISC",
+  "packageManager": "pnpm@10.29.3",
+  "devDependencies": {
+    "@eslint/core": "^1.1.0",
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^1.0.1",
+    "@eslint/markdown": "^7.5.1",
+    "@types/node": "^25.2.3",
+    "eslint": "^10.0.0",
+    "globals": "^17.3.0",
+    "jiti": "^2.6.1",
+    "prettier": "3.8.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.55.0"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.2.0",
+    "dotenv": "^17.3.1",
+    "dotenv-cli": "^11.0.0",
+    "fastify": "^5.7.4",
+    "zod": "^4.3.6"
+  }
+}
