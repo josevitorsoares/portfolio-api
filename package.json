@@ -3,12 +3,20 @@
   "version": "0.0.1",
   "description": "",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
   "scripts": {
-    "prettier":"prettier --write .",
-    "start": "NODE_ENV=development npx dotenv-cli -e .env -- tsx watch ./server.ts"
+    "start:dev": "NODE_ENV=development npx dotenv-cli -e .env -- tsx watch ./server.ts",
+    "build": "tsup",
+    "start": "node dist/server.js",
+    "prettier": "prettier --write .",
+    "lint": "eslint . --exit js,ts --fix"
   },
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/josevitorsoares/portfolio-api.git"
+  },
   "author": "josevitorsoares",
   "license": "ISC",
   "packageManager": "pnpm@10.29.3",
