@@ -4,6 +4,7 @@ import { API_PORT } from './configs/environment';
 app
   .listen({
     port: API_PORT,
+    host: '0.0.0.0',
   })
   .then(() => {
     console.info('################################################');
