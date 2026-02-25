@@ -1,9 +1,9 @@
 import { app } from '@app';
-import { API_PORT } from './configs/environment';
+import { PORT } from './configs/environment';
 
 app
   .listen({
-    port: API_PORT,
+    port: PORT,
     host: '0.0.0.0',
   })
   .then(() => {
