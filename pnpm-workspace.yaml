@@ -2,3 +2,4 @@ autoInstallPeers: true
 
 onlyBuiltDependencies:
   - esbuild
+  - msgpackr-extract
