@@ -19,7 +19,7 @@ const runCronJobs = (
   };
 
   const addLastTweetJob = cronService.createSchedule(
-    '*/15 * * * *',
+    '*/15 7-18 * * 1-5',
     () => {
       console.log(`⏳ [Cron] - Scheduling cron job ${ADD_LAST_TWEET_JOB} in the queue...`);
       bullMqQueueService.add(
