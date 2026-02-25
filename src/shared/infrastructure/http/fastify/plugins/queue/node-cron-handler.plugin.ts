@@ -1,8 +1,5 @@
 import type { ICronService } from '@shared/application/contracts';
-import {
-  GET_LAST_POST_TWEET_JOB,
-  REQUEST_QUEUE,
-} from '@shared/application/contracts/queue/constants';
+import { ADD_LAST_TWEET_JOB, REQUEST_QUEUE } from '@shared/application/contracts/queue/constants';
 import { NodeCronService } from '@shared/infrastructure/services/node-cron.service';
 import { makeBullMqQueueService } from '@shared/main/factories/infrastructure';
 import type { FastifyPluginAsync } from 'fastify';
@@ -24,10 +21,10 @@ const runCronJobs = (
   const addLastTweetJob = cronService.createSchedule(
     '*/15 * * * *',
     () => {
-      console.log(`⏳ [Cron] - Scheduling cron job ${GET_LAST_POST_TWEET_JOB} in the queue...`);
+      console.log(`⏳ [Cron] - Scheduling cron job ${ADD_LAST_TWEET_JOB} in the queue...`);
       bullMqQueueService.add(
         REQUEST_QUEUE,
-        GET_LAST_POST_TWEET_JOB,
+        ADD_LAST_TWEET_JOB,
         {},
         {
           jobId: 'add-last-tweet',

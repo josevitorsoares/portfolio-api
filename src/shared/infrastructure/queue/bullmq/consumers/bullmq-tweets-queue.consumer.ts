@@ -1,9 +1,6 @@
 import { Job, Worker } from 'bullmq';
 
-import {
-  GET_LAST_POST_TWEET_JOB,
-  REQUEST_QUEUE,
-} from '@shared/application/contracts/queue/constants';
+import { ADD_LAST_TWEET_JOB, REQUEST_QUEUE } from '@shared/application/contracts/queue/constants';
 import { InternalServerError } from '@shared/application/errors';
 import { getWorkerConnection } from '@shared/infrastructure/database/redis';
 import type { IAddLastTweetUseCase } from '@twitter/application/contracts/usecases';
@@ -29,7 +26,7 @@ export class BullMQTweetsQueueConsumer {
     const { name: jobName } = job;
 
     switch (jobName) {
-      case GET_LAST_POST_TWEET_JOB:
+      case ADD_LAST_TWEET_JOB:
         await this._addLastTweetUseCase.execute();
 
         break;
