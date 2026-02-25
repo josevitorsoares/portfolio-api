@@ -1,6 +1,12 @@
 import cors from '@fastify/cors';
 import fastify from 'fastify';
 import z, { ZodError } from 'zod';
+
+import {
+  bullMqTweetsQueueHandler,
+  nodeCronQueueHandler,
+} from '@shared/infrastructure/http/fastify/plugins/queue';
+import { twitterRoutes } from '@twitter/presentation/http/routes';
 import { APP_URL } from '../configs/environment';
 
 export const app = fastify();
@@ -10,6 +16,13 @@ app.register(cors, {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 });
+
+app.register(bullMqTweetsQueueHandler);
+
+app.register(nodeCronQueueHandler);
+
+// Register the Twitter routes
+app.register(twitterRoutes);
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
