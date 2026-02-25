@@ -5,7 +5,10 @@
     "rootDir": ".",
     "outDir": "./dist",
     "paths": {
-      "@app": ["./src/app.ts"]
+      "@app": ["./src/app.ts"],
+      "@configs/*": ["./configs/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@twitter/*": ["./src/twitter/*"]
     },
 
     // Environment Settings

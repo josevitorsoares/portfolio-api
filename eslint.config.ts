@@ -15,6 +15,11 @@ export default defineConfig([
   },
   tseslint.configs.recommended,
   {
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'warn',
+    },
+  },
+  {
     plugins: {
       json,
     },
