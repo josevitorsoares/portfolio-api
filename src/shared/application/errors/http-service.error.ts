@@ -3,9 +3,9 @@ import { CustomError } from './error.generic';
 export class HttpServiceError extends CustomError {
   public code: number;
 
-  constructor(message: string, code: number = 500) {
+  constructor(message: string, code: number = 500, name: string = 'HttpServiceError') {
     super(message);
-    this.name = 'HttpServiceError';
+    this.name = name;
     this.code = code;
   }
 }
