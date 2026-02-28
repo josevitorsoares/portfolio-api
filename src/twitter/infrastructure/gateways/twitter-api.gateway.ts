@@ -31,36 +31,5 @@ export class TwitterApiGateway implements ITwitterGateway {
       return null;
     }
 
-    return TweetPostMapper.toDomain(tweet);
   }
-
-  // private async execute(): Promise<TwitterOutputDTO | null> {
-  //   const cachedData = await this._cacheProvider.get<TwitterOutputDTO>(this._key);
-
-  //   if (cachedData) {
-  //     return cachedData;
-  //   }
-
-  //   const queryParams = new URLSearchParams({
-  //     max_results: '5',
-  //     'tweet.fields': 'public_metrics,created_at',
-  //   });
-
-  //   const response = await this._httpService.request<Tweet[]>({
-  //     method: 'GET',
-  //     url: `${TWITTER_API_URL}/users/${TWITTER_ACCOUNT_ID}/tweets?${queryParams.toString()}`,
-  //   });
-
-  //   const [tweet] = response.body;
-
-  //   if (!tweet) {
-  //     return null;
-  //   }
-
-  //   const tweetPost = TweetPostMapper.toDomain(tweet);
-
-  //   await this._cacheProvider.set(this._key, tweetPost, 1000 * 60 * 15); //15 minutes
-
-  //   return tweetPost;
-  // }
 }
