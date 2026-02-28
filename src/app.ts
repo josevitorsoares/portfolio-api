@@ -6,6 +6,7 @@ import {
   bullMqTweetsQueueHandler,
   nodeCronQueueHandler,
 } from '@shared/infrastructure/http/fastify/plugins/queue';
+import { trackingRoutes } from '@tracking/presentation/http/routes';
 import { twitterRoutes } from '@twitter/presentation/http/routes';
 import { APP_URL } from '../configs/environment';
 
@@ -23,6 +24,9 @@ app.register(nodeCronQueueHandler);
 
 // Register the Twitter routes
 app.register(twitterRoutes);
+
+// Register the Tracking routes
+app.register(trackingRoutes);
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
