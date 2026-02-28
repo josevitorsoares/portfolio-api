@@ -26,6 +26,7 @@ const envSchema = z.object({
   TWITTER_API_URL: z.url(),
   TWITTER_ACCOUNT_ID: z.string(),
   TWITTER_ACCESS_TOKEN: z.string(),
+  TRACKING_API_URL: z.url(),
 });
 
 const env = envSchema.parse(process.env, {
@@ -46,4 +47,5 @@ export const {
   TWITTER_API_URL,
   TWITTER_ACCESS_TOKEN,
   TWITTER_ACCOUNT_ID,
+  TRACKING_API_URL,
 } = env;
