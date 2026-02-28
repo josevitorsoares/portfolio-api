@@ -3,7 +3,7 @@ import type { IHttpService } from '@shared/application/contracts';
 import type { ITwitterGateway } from '@twitter/application/contracts/gateways';
 import type { TweetOutputDTO } from '@twitter/application/dtos';
 import { TweetPostMapper } from '../mappers';
-import type { Tweet } from '../mappers/types';
+import type { Tweet, TweetIncludes } from '../mappers/types';
 
 export class TwitterApiGateway implements ITwitterGateway {
   constructor(private readonly _httpService: IHttpService) {}
@@ -15,9 +15,12 @@ export class TwitterApiGateway implements ITwitterGateway {
     const queryParams = new URLSearchParams({
       max_results: maxResults.toString(),
       'tweet.fields': 'public_metrics,created_at',
+      expansions: 'author_id,referenced_tweets.id.attachments.media_keys',
+      'media.fields': 'url',
+      'user.fields': 'profile_image_url',
     });
 
-    const response = await this._httpService.request<{ data: Tweet[] }>({
+    const response = await this._httpService.request<{ data: Tweet[]; includes: TweetIncludes }>({
       method: 'GET',
       url: `${TWITTER_API_URL}/users/${tweetAccountId}/tweets?${queryParams.toString()}`,
       headers: {
@@ -26,10 +29,16 @@ export class TwitterApiGateway implements ITwitterGateway {
     });
 
     const [tweet] = response.body.data;
+    const media = response.body.includes.media;
+    const users = response.body.includes.users;
 
     if (!tweet) {
       return null;
     }
 
+    return TweetPostMapper.toDomain(tweet, {
+      media: media,
+      users: users,
+    });
   }
 }
