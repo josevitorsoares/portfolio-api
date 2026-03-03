@@ -21,6 +21,9 @@ export interface IController {
   handle(request: ICustomHttpRequest): Promise<ICustomHttpReply>;
 }
 
-export type HookFn = (
-  request: ICustomHttpRequest,
-) => Promise<ICustomHttpReply | void>;
+export type HookFn<
+  Body = unknown,
+  Params = unknown,
+  Query = unknown,
+  Headers = Record<string, unknown>,
+> = (request: ICustomHttpRequest<Body, Params, Query, Headers>) => Promise<ICustomHttpReply | void>;
