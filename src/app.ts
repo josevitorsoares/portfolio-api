@@ -2,6 +2,7 @@ import cors from '@fastify/cors';
 import fastify from 'fastify';
 import z, { ZodError } from 'zod';
 
+import { CustomError } from '@shared/application/errors';
 import { trackingRoutes } from '@tracking/presentation/http/routes';
 import { twitterRoutes } from '@twitter/presentation/http/routes';
 import { APP_URL } from '../configs/environment';
@@ -26,6 +27,13 @@ app.setErrorHandler((error, _, reply) => {
       statusCode: 400,
       message: 'Validation Environment Variables Error',
       issues: z.treeifyError(error),
+    });
+  }
+
+  if (error instanceof CustomError) {
+    return reply.status(error.code as number).send({
+      statusCode: error.code,
+      message: error.message,
     });
   }
 
