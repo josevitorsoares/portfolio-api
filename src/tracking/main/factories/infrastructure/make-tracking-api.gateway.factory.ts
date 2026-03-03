@@ -1,4 +1,4 @@
-import { makeAxiosHttpService } from '@shared/main/factories/infrastructure';
+import { makeAxiosHttpService } from '@shared/main/factories/infrastructure/services';
 import type { ITrackingGateway } from '@tracking/application/contracts/gateways';
 import { TrackingApiGateway } from '@tracking/infrastructure/gateways';
 

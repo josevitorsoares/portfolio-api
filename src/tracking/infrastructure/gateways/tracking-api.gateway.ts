@@ -1,5 +1,5 @@
 import { TRACKING_API_URL } from '@configs/environment';
-import type { IHttpService } from '@shared/application/contracts';
+import type { IHttpService } from '@shared/application/contracts/services';
 import { HttpServiceError } from '@shared/application/errors';
 import type { ITrackingGateway } from '@tracking/application/contracts/gateways';
 import type { TrackingOutputDTO } from '@tracking/application/dtos';

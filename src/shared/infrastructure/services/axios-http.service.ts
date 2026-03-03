@@ -1,4 +1,4 @@
-import type { IHttpService } from '@shared/application/contracts';
+import type { IHttpService } from '@shared/application/contracts/services';
 import { HttpServiceError } from '@shared/application/errors';
 import type { HttpAxiosInstance } from '@shared/infrastructure/http/axios';
 import type { HttpServiceRequest, HttpServiceResponse } from '@shared/infrastructure/http/types';
