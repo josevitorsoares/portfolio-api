@@ -1,4 +1,4 @@
-import { makeAxiosHttpService } from '@shared/main/factories/infrastructure';
+import { makeAxiosHttpService } from '@shared/main/factories/infrastructure/services';
 import type { ITwitterGateway } from '@twitter/application/contracts/gateways';
 import { TwitterApiGateway } from '@twitter/infrastructure/gateways';
 

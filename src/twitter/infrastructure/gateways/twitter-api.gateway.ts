@@ -1,5 +1,5 @@
 import { TWITTER_ACCESS_TOKEN, TWITTER_API_URL } from '@configs/environment';
-import type { IHttpService } from '@shared/application/contracts';
+import type { IHttpService } from '@shared/application/contracts/services';
 import type { ITwitterGateway } from '@twitter/application/contracts/gateways';
 import type { TweetOutputDTO } from '@twitter/application/dtos';
 import { TweetPostMapper } from '../mappers';
