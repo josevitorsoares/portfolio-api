@@ -1,3 +1,5 @@
+import type { TweetInputDTO } from '@twitter/application/dtos';
+
 export interface IAddLastTweetUseCase {
-  execute(): Promise<void>;
+  execute(input: TweetInputDTO): Promise<void>;
 }
