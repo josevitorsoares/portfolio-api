@@ -108,6 +108,8 @@ Este repositório existe para ser a **espinha dorsal** por trás de `josevitorso
 
 - **LinkedIn:** [José Vitor Soares](https://www.linkedin.com/in/josevitorsoares)
 
+---
+
 ## 💡 Autor
 
 Feito com 💜 por [José Vitor G. Soares](https://github.com/josevitorsoares)
