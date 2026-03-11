@@ -16,8 +16,6 @@ import type { FastifyRequest } from 'fastify';
  * - params: The route parameters casted to the specified Params type
  * - query: The query string parameters casted to the specified Query type
  * - headers: The request headers casted to the specified Headers type
- * - cookies: The request cookies casted to the specified Cookies type
- * - user: The authenticated user attached to the request
  */
 export const fastifyRequestAdapter = <
   Body = unknown,
