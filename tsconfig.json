@@ -5,7 +5,12 @@
     "rootDir": ".",
     "outDir": "./dist",
     "paths": {
-      "@app": ["./src/app.ts"]
+      "@app": ["./src/app.ts"],
+      "@configs/*": ["./configs/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@twitter/*": ["./src/twitter/*"],
+      "@tracking/*": ["./src/tracking/*"],
+      "@article/*": ["./src/article/*"]
     },
 
     // Environment Settings
@@ -46,7 +51,9 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": ["server.ts", "src/**/*", "configs/**/*"],
   "exclude": ["node_modules", "dist"]
