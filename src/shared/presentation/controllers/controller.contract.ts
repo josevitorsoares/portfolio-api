@@ -1,4 +1,5 @@
 import type { CustomError } from '@shared/application/errors';
+import type { Readable } from 'node:stream';
 import type { ICustomHttpReply } from '../http';
 
 export class ControllerResponse {
@@ -52,6 +53,26 @@ export class ControllerResponse {
       statusCode: error.code,
       error: error.name,
       message: error.message,
+    };
+  }
+
+  static file(
+    stream: Readable,
+    contentType: string,
+    fileName?: string | undefined,
+  ): ICustomHttpReply<Readable> {
+    const headers: Record<string, string> = {
+      'Content-Type': contentType,
+    };
+
+    if (fileName) {
+      headers['Content-Disposition'] = `inline; fileName="${fileName}"`;
+    }
+
+    return {
+      statusCode: 200,
+      body: stream,
+      headers,
     };
   }
 }
