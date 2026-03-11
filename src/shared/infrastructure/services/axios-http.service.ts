@@ -11,12 +11,13 @@ export class AxiosHttpService implements IHttpService {
     data: HttpServiceRequest<Body>,
   ): Promise<HttpServiceResponse<Body>> {
     try {
-      const { method, url, body, headers } = data;
+      const { method, url, body, responseType = 'json', headers } = data;
 
       const response = await this._axiosInstance.request<Body>({
         method,
         url,
         data: body ?? {},
+        responseType,
         headers: {
           'Content-Type': 'application/json',
           ...(headers && headers),
