@@ -82,7 +82,10 @@ const buildFastifySchema = (schema?: RegisterRouteOptions['schema']): Record<str
 const createRouteHandler = <Body, Params, Query, Headers>(
   controller: RegisterRouteOptions<Body, Params, Query, Headers>['controller'],
 ) => {
-  return async (fastifyRequest: FastifyRequest, fastifyReply: FastifyReply): Promise<void> => {
+  return async (
+    fastifyRequest: FastifyRequest,
+    fastifyReply: FastifyReply,
+  ): Promise<FastifyReply> => {
     try {
       const customRequest = fastifyRequestAdapter<Body, Params, Query, Headers>(fastifyRequest);
 
@@ -91,7 +94,7 @@ const createRouteHandler = <Body, Params, Query, Headers>(
         validate: { body: customRequest.body } as Body,
       });
 
-      fastifyReplyAdapter(customReply, fastifyReply);
+      return fastifyReplyAdapter(customReply, fastifyReply);
     } catch (error) {
       console.error('[ROUTE HANDLER ERROR]:', {
         method: fastifyRequest.method,
