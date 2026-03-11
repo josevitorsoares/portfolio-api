@@ -12,7 +12,8 @@ export interface ICustomHttpRequest<
 
 export interface ICustomHttpReply<Response = unknown> {
   statusCode: number;
-  body?: { data?: Response };
+  body?: { data?: Response } | Response;
+  headers?: Record<string, string>;
   message?: string;
   error?: string;
 }
