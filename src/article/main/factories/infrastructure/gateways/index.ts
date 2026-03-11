@@ -1,1 +1,1 @@
-export * from './make-axios-article.gateway.factory';
+export * from './make-article.gateway.factory'

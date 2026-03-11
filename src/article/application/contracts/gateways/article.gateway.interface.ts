@@ -1,5 +1,5 @@
-import type { ArticleOutput } from '../../dtos';
+import type { ArticleOutput } from '@article/application/dtos';
 
 export interface IArticleGateway {
-  getArticle(articleURL: string): Promise<ArticleOutput>;
+  getArticle(): Promise<ArticleOutput | null>;
 }
