@@ -2,6 +2,7 @@ import cors from '@fastify/cors';
 import fastify from 'fastify';
 import z, { ZodError } from 'zod';
 
+import { articleRoutes } from '@article/presentation/http/routes';
 import { CustomError } from '@shared/application/errors';
 import { trackingRoutes } from '@tracking/presentation/http/routes';
 import { twitterRoutes } from '@twitter/presentation/http/routes';
@@ -20,6 +21,8 @@ app.register(twitterRoutes);
 
 // Register the Tracking routes
 app.register(trackingRoutes);
+
+app.register(articleRoutes);
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
