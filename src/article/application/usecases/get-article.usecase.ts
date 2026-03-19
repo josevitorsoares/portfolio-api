@@ -5,11 +5,8 @@ import type { ArticleOutput } from '../dtos';
 export class GetArticleUseCase implements IGetArticleUseCase {
   constructor(private readonly _articleGateway: IArticleGateway) {}
 
-  async execute(): Promise<ArticleOutput> {
-    const articleURL: string =
-      'https://revistas.unifacs.br/index.php/rsc/article/viewFile/8567/5141.pdf' as const;
-
-    const article = await this._articleGateway.getArticle(articleURL);
+  async execute(): Promise<ArticleOutput | null> {
+    const article = await this._articleGateway.getArticle();
 
     return article;
   }

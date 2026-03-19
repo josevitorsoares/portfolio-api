@@ -1,1 +1,1 @@
-export * from './axios-article.gateway';
+export * from './article.gateway';
