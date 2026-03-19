@@ -10,6 +10,10 @@ export class GetArticleController implements IController {
     try {
       const articleStream = await this._getArticleUseCase.execute();
 
+      if (!articleStream) {
+        return ControllerResponse.badRequest('Article not found');
+      }
+
       return ControllerResponse.file(articleStream, 'application/pdf', 'article.pdf');
     } catch (error: any) {
       if (error instanceof CustomError) {
